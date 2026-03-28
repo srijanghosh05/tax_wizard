@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Plus Jakarta Sans", "Inter", sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  /* The Fiscal Editorial Palette */
+  --color-primary: #182686;
+  --color-primary-container: #323f9d;
+  --color-on-primary: #ffffff;
+  
+  --color-secondary: #006c4a;
+  --color-secondary-container: #82f5c1;
+  --color-on-secondary: #ffffff;
+
+  /* Surface Hierarchy (Tonal Shifting) */
+  --color-surface: #f8f9fa;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f3f4f5;
+  --color-surface-container: #ebecef;
+  --color-surface-container-high: #e2e3e6;
+  --color-surface-container-highest: #e1e3e4;
+
+  --color-on-surface: #191c1d;
+  --color-on-surface-variant: #454652;
+  --color-outline-variant: #c6c5d4;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    border-color: transparent; /* Strictly enforce no standard borders */
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    background-color: var(--color-surface);
+  }
+
+  body {
+    color: var(--color-on-surface);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+    font-weight: 800;
+  }
+
+  /* Financial Numerals */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+
+  ::selection {
+    background-color: var(--color-primary-container);
+    color: white;
+  }
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* CTA Gradient */
+.btn-primary-gradient {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-container) 100%);
+  box-shadow: 0 4px 14px 0 rgba(24, 38, 134, 0.15);
+}
+
+/* Ambient Shadow (Primary Tint) */
+.shadow-premium {
+  box-shadow: 0 8px 32px 0 rgba(24, 38, 134, 0.06);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-outline-variant);
+  border-radius: 10px;
+}
+
+/* Animations */
+@keyframes count-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-counting {
+  animation: count-in 1s ease-out forwards;
+}
